@@ -13,6 +13,9 @@ const modalBtn = document.querySelectorAll(".modal-btn");
 const modalClose = document.querySelector(".close"); // Button for closing the modal form
 const modalCloseSubmitted = document.querySelector(".close-submitted"); // Button for closing the submitted modal form
 const formData = document.querySelectorAll(".formData");
+const footer = document.querySelector("footer");
+const heroSection = document.querySelector(".hero-section");
+
 
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
@@ -24,11 +27,15 @@ modalCloseSubmitted.addEventListener("click", closeModal);
 // launch modal form
 function launchModal() {
   modalbg.style.display = "block";
+  footer.className = "hideMobile"; // Class to hide footer if Modal is on mobile
+  heroSection.classList.add("hideMobile");
 }
 
 // Close modal form
 function closeModal() {
   modalbg.style.display = "none";
+  footer.className = "";
+  heroSection.classList.remove("hideMobile");
 }
 
 // Set data attributes for style and message error of a formData
