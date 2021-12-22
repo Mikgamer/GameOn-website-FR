@@ -60,7 +60,7 @@
               name="reserve"
               action="index.html"
               method="get"
-              onsubmit="return validate();"
+              onsubmit="return validate(event);"
             >
               <div
                 class="formData">
@@ -212,6 +212,9 @@
                 value="C'est parti"
               />
             </form>
+            <h2 class="message-submitted">Merci pour<br>
+              votre inscription</h2>
+            <button class="btn-submit close-submitted">Fermer</button>
           </div>
         </div>
       </div>

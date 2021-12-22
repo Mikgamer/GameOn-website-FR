@@ -11,6 +11,7 @@ function editNav() {
 const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const modalClose = document.querySelector(".close"); // Button for closing the modal form
+const modalCloseSubmitted = document.querySelector(".close-submitted"); // Button for closing the submitted modal form
 const formData = document.querySelectorAll(".formData");
 
 // launch modal event
@@ -18,6 +19,7 @@ modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 
 // close modal event
 modalClose.addEventListener("click", closeModal);
+modalCloseSubmitted.addEventListener("click", closeModal);
 
 // launch modal form
 function launchModal() {
@@ -41,7 +43,11 @@ function unsetError(currentFormData) {
   currentFormData.setAttribute('data-error-visible', '');
 }
 
-function validate() {
+function validate(event) {
+  // Prevent reloading the page by submitting the form with get method
+  event.preventDefault();
+
+  // Set value for each input
   const formFirst = document.getElementById("first"); // Get firstname input value
   const formLast = document.getElementById("last"); // Get lastname input value
   const formEmail = document.getElementById("email"); // Get email input value
@@ -91,6 +97,10 @@ function validate() {
 
   // If there is no error, return true
   if (isValid) {
+    // Show successfull validation message
+    document.querySelector("form[name=reserve]").className += " submitted";
+    modalCloseSubmitted.style.display = "block";
+    document.querySelector(".message-submitted").style.display = "block";
     return true;
   } else {
     return false
