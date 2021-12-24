@@ -69,7 +69,7 @@ function validate(event) {
   if (!formFirst.validity.valid)     {
     setError(formFirst.parentNode, 'Veuillez entrer 2 caractères ou plus pour le champ du nom.');
     isValid = false;
-  } else { unsetError(formFirst.parentNode); console.log("not an error anymore") }
+  } else { unsetError(formFirst.parentNode); }
 
   if (!formLast.validity.valid)      {
     setError(formLast.parentNode, 'Veuillez entrer 2 caractères ou plus pour le champ du nom.');
@@ -102,15 +102,14 @@ function validate(event) {
     isValid = false;
   } else { unsetError(formCheckbox1.parentNode); }
 
-  // If there is no error, return true
   if (isValid) {
     // Show successfull validation message
     document.querySelector("form[name=reserve]").className += " submitted";
     modalCloseSubmitted.style.display = "block";
     document.querySelector(".message-submitted").style.display = "block";
-    return true;
-  } else {
-    return false
   }
+
+  // If there is no error, return true
+  return isValid;
 }
 
